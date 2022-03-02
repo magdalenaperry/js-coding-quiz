@@ -12,13 +12,21 @@ var addScoreEl = document.querySelector('#addScore');
 var endEl = document.querySelector('#game-over');
 var endBtn = document.querySelector('#end-btn');
 
+var showQuestions = document.getElementById('quiz-questions');
+var showAnswers = document.getElementById('quiz-choices');
+
+//question position in quiz
+var position = 0;
+
 // question Bank
-var myQuestions = [{
+var myQuestions = [
+    {
         question: 'What is my name?',
         answers: {
-            1: "abc",
-            2: "efg",
-            3: "hij"
+            a: "Magdalena",
+            b: "Brad",
+            c: "Anthony",
+            d: "Sasha"
         },
         correctAnswer: "2"
     },
@@ -34,6 +42,7 @@ var myQuestions = [{
 ];
 
 // show and hide screens
+// provided by instructor, Anthony Cooper
 function startScreen() {
     timerEl.style.display = "block";
     startEl.style.display = "block";
@@ -48,6 +57,7 @@ function gameScreen() {
     endEl.style.display = "none";
     questEl.display = "block";
     setTime();
+    showCurrentQuestion();
 }
 
 function endScreen() {
@@ -59,26 +69,41 @@ function endScreen() {
 }
 
 
+//while question.length less than 
+// while number of questions
+
 //add questions to page
 
 // questEl.innerHTML = myQuestions[0].question;
-// choiceEl.innerHTML = myQuestions[0].answers;
+// choiceEl.innerHTML = myQuestions[0].answers.a
 
- var showQuestions = document.getElementById('quiz-questions'); {
-     for (var i = 0; i < myQuestions.length; i++) {
-         // prints question to screen
-         showQuestions.textContent = (myQuestions[i].question);
+//received help from instructor
+var showCurrentQuestion = function (){
+    var item =myQuestions[position];
+    console.log(item);
+    for (var key in item.answers){
+        // console.log(key);
+        // console.log(item.answers[key]);
+        console.log(key + ". " +item.answers[key]);
 
-         console.log(myQuestions[i])
-         console.log(myQuestions.answers);
-     }
- };
+        var node = document.createElement('button')
+        choiceEl.appendChild(node);
+        node.textContent = key + ". " + item.answers[key];
+    }
+}
+
+var correct
 
 
+  // for (var i = 0; i <myQuestions.length; i++){
+  //     var item = myQuestions.answers[i];
+  //     var answerBtn = document.createElement('button');
+  //     answerBtn.textContent= i + 1 + ". " + item;    
+  //     gameEl.appendChild(answerBtn);
+  // }
 
 
-
-
+console.log(showAnswers);
 
 
 
@@ -86,7 +111,7 @@ function endScreen() {
 
 
 // timer
-var secondsLeft = 120;
+var secondsLeft = 1000;
 
 timerEl.textContent = secondsLeft + " seconds left";
 
