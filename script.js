@@ -40,28 +40,52 @@ function startScreen() {
     gameEl.style.display = "none";
     endEl.style.display = "none";
 }
+
 function gameScreen() {
- timerEl.style.display = "block";
- startEl.style.display = "none";
- gameEl.style.display = "block";
- endEl.style.display = "none";
- questEl.display ="block";
- setTime();
+    timerEl.style.display = "block";
+    startEl.style.display = "none";
+    gameEl.style.display = "block";
+    endEl.style.display = "none";
+    questEl.display = "block";
+    setTime();
 }
+
 function endScreen() {
- timerEl.style.display = "block";
- startEl.style.display = "none";
- gameEl.style.display = "none";
- endEl.style.display = "block";
- questEl.display = "none";
+    timerEl.style.display = "block";
+    startEl.style.display = "none";
+    gameEl.style.display = "none";
+    endEl.style.display = "block";
+    questEl.display = "none";
 }
+
+
+//add questions to page
+
+// questEl.innerHTML = myQuestions[0].question;
+// choiceEl.innerHTML = myQuestions[0].answers;
+
+ var showQuestions = document.getElementById('quiz-questions'); {
+     for (var i = 0; i < myQuestions.length; i++) {
+         // prints question to screen
+         showQuestions.textContent = (myQuestions[i].question);
+
+         console.log(myQuestions[i])
+         console.log(myQuestions.answers);
+     }
+ };
+
+
+
+
+
+
+
+
+
+
+
 
 // timer
-// var timeout = setTimeout(function(){gameScreen}, 20000);
-
-
-
-
 var secondsLeft = 120;
 
 timerEl.textContent = secondsLeft + " seconds left";
@@ -79,10 +103,9 @@ function setTime() {
         printSecondsLeft();
 
         if (secondsLeft <= 0) {
-            // // Stops execution of action at set interval
-            // clearInterval(timerInterval);
-            // // Calls function to create and append image
-            // sendMessage();
+            // Stops execution of action at set interval
+            clearInterval(timerInterval);
+            endScreen();
         }
 
     }, 1000);
