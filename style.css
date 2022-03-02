@@ -1,0 +1,44 @@
+html * {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+
+}
+#start{
+    background-color: blue;
+    padding: 20px 100px 20px 100px;
+}
+
+#game {
+    background: yellow;
+    padding: 100px;
+}
+
+#game-over {
+    background-color: red;
+    padding: 100px;
+}
+
+h1 {
+    background-color: green; 
+    padding: 50px 100px 50px 100px;
+}
+
+#quiz-questions{
+    background-color: grey;
+    padding: 50px 100px 50px 100px;
+}
+
+#quiz-choices {
+    background-color: lightgrey;
+    padding: 50px 100px 50px 100px;
+}
+
+#next-btn {
+    background-color: white;
+}
+
+#timer {
+    background-color: orange;
+    padding: 10px;
+}
