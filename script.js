@@ -17,13 +17,14 @@ var position = 0;
 // end score selectors
 var addScoreEl = document.querySelector('#addScore');
 var endEl = document.querySelector('#game-over');
-var endBtn = document.querySelector('#end-btn');
 var submitBtn = document.querySelector('#submit-score');
 var playAgBtn = document.querySelector('#play-again');
 
 // timer variables
 var timerEl = document.querySelector('#timer');
-var secondsLeft = 45;
+var secondsLeft = 4;
+var timerInterval = null;
+
 
 //scoring variables
 var scoreEl = document.querySelector('#score');
@@ -95,6 +96,9 @@ function startScreen() {
     startEl.style.display = "block";
     gameEl.style.display = "none";
     endEl.style.display = "none";
+    // reset position on question and seconds
+    secondsLeft = 45;
+    position = 0;
 }
 
 function gameScreen() {
@@ -103,10 +107,11 @@ function gameScreen() {
     startEl.style.display = "none";
     gameEl.style.display = "block";
     endEl.style.display = "none";
-    questEl.display = "block";
     setTime();
     showCurrentQuestion();
     showCurrentAnswer();
+    printSecondsLeft();
+    
 
 }
 
@@ -116,8 +121,8 @@ function endScreen() {
     startEl.style.display = "none";
     gameEl.style.display = "none";
     endEl.style.display = "block";
-    questEl.display = "none";
-    endBtn.display = "none";
+    clearInterval(timerInterval);
+
 }
 
 // populate question beginnning at position: 0
@@ -153,9 +158,8 @@ var showCurrentAnswer = function () {
 var nextQues = function () {
     for (let i = 1; i < 5; i++) {
         var radioButton = document.getElementById('rB ' + i);
-        
+
         if (radioButton.checked == true) {
-            // console.log(radioButton.dataset);
             if (myQuestions[position].correctAnswer == i) {
                 scoreEl.textContent = scoreCount;
                 scoreCount = scoreCount + 20;
@@ -163,14 +167,18 @@ var nextQues = function () {
             } else {
                 // reduce timer
                 secondsLeft = secondsLeft - 10
-            }
-            // console.log(myQuestions[position].correctAnswer);
+            };
         }
     }
 
     position++;
-    showCurrentQuestion();
-    showCurrentAnswer();
+    if (position < myQuestions.length) {
+        showCurrentQuestion();
+        showCurrentAnswer();
+    }else{
+        endScreen();
+    }
+
 }
 
 // timer
@@ -181,7 +189,7 @@ function printSecondsLeft() {
 function setTime() {
     printSecondsLeft();
     // Sets interval in variable
-    var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
         secondsLeft--;
 
         printSecondsLeft();
@@ -190,24 +198,22 @@ function setTime() {
             // Stops execution of action at set interval
             clearInterval(timerInterval);
             endScreen();
-        }
 
+        }
     }, 1000);
+
 }
 
-//play again function
-function playAgain (){
-       startScreen();
-       setTime();
-   };
+// play again function
+function playAgain() {
+    startScreen();
+};
 
 // clicking events
 startBtn.addEventListener('click', gameScreen, setTime);
-endBtn.addEventListener('click', endScreen);
 nextBtn.addEventListener('click', nextQues);
 playAgBtn.addEventListener('click', playAgain);
 // submitBtn.addEventListener('click');
-
 
 // starting page loading
 function loadPage() {
