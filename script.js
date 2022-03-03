@@ -1,52 +1,106 @@
-// document selectors
-var timerEl = document.querySelector('#timer')
+// start selectors
 var startEl = document.querySelector('#start');
 var startBtn = document.querySelector('#start-btn');
 
+// game screen selectors
 var gameEl = document.querySelector('#game');
 var questEl = document.querySelector('#quiz-questions');
 var choiceEl = document.querySelector('#quiz-choices');
 var nextBtn = document.querySelector('#next-btn');
 
+// question selectors
+var showQuestions = document.getElementById('quiz-questions');
+var showAnswers = document.getElementById('quiz-choices');
+// question position in quiz
+var position = 0;
+
+// end score selectors
 var addScoreEl = document.querySelector('#addScore');
 var endEl = document.querySelector('#game-over');
 var endBtn = document.querySelector('#end-btn');
 
-var showQuestions = document.getElementById('quiz-questions');
-var showAnswers = document.getElementById('quiz-choices');
-
 // timer variables
-var secondsLeft = 1000;
-// timerEl.textContent = secondsLeft + " seconds left";
+var timerEl = document.querySelector('#timer');
+var secondsLeft = 300;
 
-//question position in quiz
-var position = 0;
+//scoring variables
+var scoreEl = document.querySelector('#score');
+scoreCount = 0;
+
+
+
+
+
 
 // question Bank
-var myQuestions = [{
+var myQuestions = [
+    // ques1
+    {
         question: 'What is my name?',
         answers: {
-            a: "Magdalena",
-            b: "Brad",
-            c: "Anthony",
-            d: "Sasha"
+            1: "Magdalena",
+            2: "Brad",
+            3: "Anthony",
+            4: "Sasha"
         },
-        correctAnswer: "2"
+        correctAnswer: 1
     },
+    // ques2
     {
         question: 'What is your name?',
         answers: {
             1: "abc",
             2: "efg",
+            3: "hij",
+            4: 'answer'
+        },
+        correctAnswer: 2
+    },
+    // ques3
+    {
+        question: 'How old am I?',
+        answers: {
+            1: "abc",
+            2: "efg",
+            3: "hij",
+            4: 'answer'
+        },
+        correctAnswer: 3
+    },
+    // ques4
+    {
+        question: 'How old is my plant?',
+        answers: {
+            1: "abc",
+            2: "efg",
             3: "hij"
         },
-        correctAnswer: "2"
+        correctAnswer: 1
     },
+    //ques5
+    {
+        question: 'What is a titan?',
+        answers: {
+            1: "abc",
+            2: "efg",
+            3: "hij",
+            4: 'answer'
+        },
+        correctAnswer: 4
+    },
+
+
+
+
+
+
+
 ];
 
-// show and hide screens -- provided by instructor, Anthony Cooper
+// show and hide screens -- partially provided by instructor, Anthony Cooper
 function startScreen() {
     timerEl.style.display = "block";
+    scoreEl.style.display = "block";
     startEl.style.display = "block";
     gameEl.style.display = "none";
     endEl.style.display = "none";
@@ -54,6 +108,7 @@ function startScreen() {
 
 function gameScreen() {
     timerEl.style.display = "block";
+    scoreEl.style.display = "block";
     startEl.style.display = "none";
     gameEl.style.display = "block";
     endEl.style.display = "none";
@@ -65,6 +120,7 @@ function gameScreen() {
 
 function endScreen() {
     timerEl.style.display = "block";
+    scoreEl.style.display = "block";
     startEl.style.display = "none";
     gameEl.style.display = "none";
     endEl.style.display = "block";
@@ -73,7 +129,8 @@ function endScreen() {
 
 // populate question beginnning at position: 0
 var showCurrentQuestion = function () {
-    var node = document.createElement('p')
+    questEl.innerHTML = "";
+    var node = document.createElement('p');
     questEl.appendChild(node);
     node.textContent = myQuestions[position].question
 }
@@ -81,36 +138,78 @@ var showCurrentQuestion = function () {
 // populate answer choices beginning at position: 0
 var showCurrentAnswer = function () {
     var item = myQuestions[position];
-    // console.log(item);
+    var choice = 1;
+    choiceEl.innerHTML = "";
     for (var key in item.answers) {
-        // console.log(item.answers[key]);
-        // console.log(key + ". " +item.answers[key]);
-
         // creates buttons for abcd choices and adds to answer choices
-        var node = document.createElement('button')
-        choiceEl.appendChild(node);
-        // adds answer choice information to each button
-        node.textContent = key + ". " + item.answers[key];
-        // var node1 = document.createElement('p')
-        // questEl.appendChild(node1);
-        // node1.textContent = 'hi'}
+        var inputAdd = document.createElement('input');
+        inputAdd.setAttribute('type', 'radio')
+        choiceEl.appendChild(inputAdd);
+        inputAdd.dataset.value = key;
+        inputAdd.id = "radio button " + choice++;
 
+        var inputLabel = document.createElement('label');
+        inputLabel.innerHTML = key + ". " + item.answers[key]
+        choiceEl.appendChild(inputLabel);
+
+        // adds answer choice information to each button
+        inputAdd.textContent = key + ". " + item.answers[key];
     }
 }
 
-var checkAnswer = function (){
- 
 
 
 
-}
 
-// for (var i = 0; i <myQuestions.length; i++){
-//     var item = myQuestions.answers[i];
-//     var answerBtn = document.createElement('button');
-//     answerBtn.textContent= i + 1 + ". " + item;    
-//     gameEl.appendChild(answerBtn);
+
+// var addScore = function(){
+//     timerEl.textContent = secondsLeft + " seconds left";
+
 // }
+
+
+
+
+
+var nextQues = function () {
+    // need to check if the correct answer of current question matches the current quesiton clicked
+    // if the data attribute matches 
+    // console.log (showCurrentQuestion === correctAnswer);
+
+
+
+    for (let i = 1; i < 5; i++) {
+        var radioButton = document.getElementById('radio button ' + i);
+        // console.log(radioButton);
+        // console.log(radioButton.checked);
+        if (radioButton.checked == true) {
+            // console.log(radioButton.dataset);
+            if (myQuestions[position].correctAnswer == i) {
+                scoreEl.textContent = scoreCount;
+
+
+
+
+                scoreCount = scoreCount + 20;
+                scoreEl.textContent = scoreCount;
+                console.log(scoreCount);
+            } else {
+                // reduce timer
+                secondsLeft = secondsLeft - 10
+            }
+
+            // console.log(myQuestions[position].correctAnswer);
+        }
+    }
+
+
+
+
+
+    position++;
+    showCurrentQuestion();
+    showCurrentAnswer();
+}
 
 // timer
 function printSecondsLeft() {
@@ -134,10 +233,24 @@ function setTime() {
     }, 1000);
 }
 
+
+// function handleInitialSubmit(event) {
+//     event.preventDefault();
+
+//     var stored = JSON.parse(localStorage.getItem('highScores')) || [];
+//     var updatedScores = stored.concat({
+//         score: score,
+//         initials: initialsInput.value
+//     });
+
+//     localStorage.setItem('highScores', JSON.stringify(updatedScores));
+// }
+
+
 // clicking events
 startBtn.addEventListener('click', gameScreen, setTime);
 endBtn.addEventListener('click', endScreen);
-// nextBtn.addEventListener('click', checkAnswer);
+nextBtn.addEventListener('click', nextQues);
 
 // starting page loading
 function loadPage() {

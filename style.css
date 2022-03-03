@@ -55,11 +55,25 @@ h1 {
     background-color: black;
 } */
 
-#timer {
-    background-color: red;
-    padding: 10px;
+#timer
+ {
+    background-color: rgba(255, 0, 0, 0.351);
+    font-size: 50px;
+    font-weight: 800;
+    padding: 50px;
 }
 
 #add-score{
     padding: 10px;
+}
+
+#score{
+    padding: 50px;
+    font-size: 100px;
+    font-weight: 800;
+    background-color:rgba(255, 0, 0, 0.351);
+}
+
+@media screen  {
+    
 }
