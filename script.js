@@ -44,12 +44,12 @@ var myQuestions = [
     },
     // ques2
     {
-        question: 'What is your name?',
+        question: 'What is my favorite game?',
         answers: {
-            1: "Grader",
-            2: "Anthony",
-            3: "hij",
-            4: 'answer'
+            1: "Halo",
+            2: "Destiny 2",
+            3: "Valheim",
+            4: 'Red Dead Redemption'
         },
         correctAnswer: 2
     },
@@ -57,10 +57,10 @@ var myQuestions = [
     {
         question: 'How old am I?',
         answers: {
-            1: "abc",
-            2: "efg",
-            3: "hij",
-            4: 'answer'
+            1: "25",
+            2: "26",
+            3: "27",
+            4: '28'
         },
         correctAnswer: 3
     },
@@ -68,21 +68,21 @@ var myQuestions = [
     {
         question: 'How old is my plant?',
         answers: {
-            1: "abc",
-            2: "efg",
-            3: "hij",
-            4: 'answer'
+            1: "6 years",
+            2: "7 years",
+            3: "8 years",
+            4: '9 years'
         },
         correctAnswer: 1
     },
     //ques5
     {
-        question: 'What is a titan?',
+        question: 'What is my plant name?',
         answers: {
-            1: "abc",
-            2: "efg",
-            3: "hij",
-            4: 'answer'
+            1: "Bamboo",
+            2: "Chloropyll",
+            3: "Little One",
+            4: 'HD'
         },
         correctAnswer: 4
     },
@@ -168,10 +168,6 @@ var nextQues = function () {
         }
     }
 
-
-
-
-
     position++;
     showCurrentQuestion();
     showCurrentAnswer();
@@ -202,12 +198,8 @@ function setTime() {
 //play again function
 function playAgain (){
        startScreen();
+       setTime();
    };
-
-
-
-
-
 
 // clicking events
 startBtn.addEventListener('click', gameScreen, setTime);
