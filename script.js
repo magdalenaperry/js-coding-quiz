@@ -29,11 +29,6 @@ var secondsLeft = 45;
 var scoreEl = document.querySelector('#score');
 scoreCount = 0;
 
-
-
-
-
-
 // question Bank
 var myQuestions = [
     // ques1
@@ -169,7 +164,6 @@ var nextQues = function () {
                 // reduce timer
                 secondsLeft = secondsLeft - 10
             }
-
             // console.log(myQuestions[position].correctAnswer);
         }
     }
@@ -211,7 +205,10 @@ function playAgain (){
    }
 
 
-fun
+// function handleSubmit(event){
+//     event.preventDefault();
+//     var highScore = 
+// };
 
 
 
@@ -219,26 +216,26 @@ fun
 
 
 
-var name = document.getElementById('add-score')
+// var name = document.getElementById('add-score')
 
-var highScore = {
-    name: name.value,
-    scoreCount: scoreCount.value,
-    // comment: comment.value.trim()
-};
-// must stringify arrays
-localStorage.setItem("highScore", JSON.stringify(highScore));
-renderMessage();
+// var highScore = {
+//     name: name.value,
+//     scoreCount: scoreCount.value,
+//     // comment: comment.value.trim()
+// };
+// // must stringify arrays
+// localStorage.setItem("highScore", JSON.stringify(highScore));
+// renderMessage();
 
 
-function renderMessage() {
-    //get item from the local storage you have to 'parse'.
-    var lastGrade = JSON.parse(localStorage.getItem("highScore"));
-    if (lastGrade !== null) {
-        // document.querySelector(".message").textContent = lastGrade.student +
-        //     " received a/an " + lastGrade.grade
-    }
-}
+// function renderMessage() {
+//     //get item from the local storage you have to 'parse'.
+//     var lastGrade = JSON.parse(localStorage.getItem("highScore"));
+//     if (lastGrade !== null) {
+//         // document.querySelector(".message").textContent = lastGrade.student +
+//         //     " received a/an " + lastGrade.grade
+//     }
+// }
 
 
 
