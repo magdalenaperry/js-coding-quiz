@@ -202,40 +202,7 @@ function setTime() {
 //play again function
 function playAgain (){
        startScreen();
-   }
-
-
-// function handleSubmit(event){
-//     event.preventDefault();
-//     var highScore = 
-// };
-
-
-
-
-
-
-
-// var name = document.getElementById('add-score')
-
-// var highScore = {
-//     name: name.value,
-//     scoreCount: scoreCount.value,
-//     // comment: comment.value.trim()
-// };
-// // must stringify arrays
-// localStorage.setItem("highScore", JSON.stringify(highScore));
-// renderMessage();
-
-
-// function renderMessage() {
-//     //get item from the local storage you have to 'parse'.
-//     var lastGrade = JSON.parse(localStorage.getItem("highScore"));
-//     if (lastGrade !== null) {
-//         // document.querySelector(".message").textContent = lastGrade.student +
-//         //     " received a/an " + lastGrade.grade
-//     }
-// }
+   };
 
 
 
@@ -247,7 +214,7 @@ startBtn.addEventListener('click', gameScreen, setTime);
 endBtn.addEventListener('click', endScreen);
 nextBtn.addEventListener('click', nextQues);
 playAgBtn.addEventListener('click', playAgain);
-submitBtn.addEventListener('click', );
+// submitBtn.addEventListener('click');
 
 
 // starting page loading
