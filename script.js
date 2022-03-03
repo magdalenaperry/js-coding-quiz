@@ -15,12 +15,15 @@ var endBtn = document.querySelector('#end-btn');
 var showQuestions = document.getElementById('quiz-questions');
 var showAnswers = document.getElementById('quiz-choices');
 
+// timer variables
+var secondsLeft = 1000;
+// timerEl.textContent = secondsLeft + " seconds left";
+
 //question position in quiz
 var position = 0;
 
 // question Bank
-var myQuestions = [
-    {
+var myQuestions = [{
         question: 'What is my name?',
         answers: {
             a: "Magdalena",
@@ -41,8 +44,7 @@ var myQuestions = [
     },
 ];
 
-// show and hide screens
-// provided by instructor, Anthony Cooper
+// show and hide screens -- provided by instructor, Anthony Cooper
 function startScreen() {
     timerEl.style.display = "block";
     startEl.style.display = "block";
@@ -58,6 +60,7 @@ function gameScreen() {
     questEl.display = "block";
     setTime();
     showCurrentQuestion();
+    showCurrentAnswer();
 }
 
 function endScreen() {
@@ -68,53 +71,48 @@ function endScreen() {
     questEl.display = "none";
 }
 
+// populate question beginnning at position: 0
+var showCurrentQuestion = function () {
+    var node = document.createElement('p')
+    questEl.appendChild(node);
+    node.textContent = myQuestions[position].question
+}
 
-//while question.length less than 
-// while number of questions
-
-//add questions to page
-
-// questEl.innerHTML = myQuestions[0].question;
-// choiceEl.innerHTML = myQuestions[0].answers.a
-
-//received help from instructor
-var showCurrentQuestion = function (){
-    var item =myQuestions[position];
-    console.log(item);
-    for (var key in item.answers){
-        // console.log(key);
+// populate answer choices beginning at position: 0
+var showCurrentAnswer = function () {
+    var item = myQuestions[position];
+    // console.log(item);
+    for (var key in item.answers) {
         // console.log(item.answers[key]);
-        console.log(key + ". " +item.answers[key]);
+        // console.log(key + ". " +item.answers[key]);
 
+        // creates buttons for abcd choices and adds to answer choices
         var node = document.createElement('button')
         choiceEl.appendChild(node);
+        // adds answer choice information to each button
         node.textContent = key + ". " + item.answers[key];
+        // var node1 = document.createElement('p')
+        // questEl.appendChild(node1);
+        // node1.textContent = 'hi'}
+
     }
 }
 
-var correct
-
-
-  // for (var i = 0; i <myQuestions.length; i++){
-  //     var item = myQuestions.answers[i];
-  //     var answerBtn = document.createElement('button');
-  //     answerBtn.textContent= i + 1 + ". " + item;    
-  //     gameEl.appendChild(answerBtn);
-  // }
-
-
-console.log(showAnswers);
+var checkAnswer = function (){
+ 
 
 
 
+}
 
-
+// for (var i = 0; i <myQuestions.length; i++){
+//     var item = myQuestions.answers[i];
+//     var answerBtn = document.createElement('button');
+//     answerBtn.textContent= i + 1 + ". " + item;    
+//     gameEl.appendChild(answerBtn);
+// }
 
 // timer
-var secondsLeft = 1000;
-
-timerEl.textContent = secondsLeft + " seconds left";
-
 function printSecondsLeft() {
     timerEl.textContent = secondsLeft + " seconds left";
 }
@@ -136,19 +134,10 @@ function setTime() {
     }, 1000);
 }
 
-
-
-
-
-
-
-
-
-
-
 // clicking events
 startBtn.addEventListener('click', gameScreen, setTime);
 endBtn.addEventListener('click', endScreen);
+// nextBtn.addEventListener('click', checkAnswer);
 
 // starting page loading
 function loadPage() {
