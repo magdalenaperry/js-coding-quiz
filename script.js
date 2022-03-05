@@ -111,7 +111,7 @@ function gameScreen() {
     showCurrentQuestion();
     showCurrentAnswer();
     printSecondsLeft();
-    
+
 
 }
 
@@ -122,6 +122,7 @@ function endScreen() {
     gameEl.style.display = "none";
     endEl.style.display = "block";
     clearInterval(timerInterval);
+
 
 }
 
@@ -141,13 +142,13 @@ var showCurrentAnswer = function () {
     for (var key in item.answers) {
         // creates radio buttons for abcd choices and adds to answer choices
         var inputAdd = document.createElement('input');
-        inputAdd.setAttribute('type', 'radio')
+        inputAdd.setAttribute('type', 'checkbox')
         choiceEl.appendChild(inputAdd);
         inputAdd.dataset.value = key;
         inputAdd.id = "rB " + choice++;
 
         var inputLabel = document.createElement('label');
-        inputLabel.innerHTML = key + ". " + item.answers[key]
+        inputLabel.innerHTML = item.answers[key]
         choiceEl.appendChild(inputLabel);
 
         // adds answer choice information to each button
@@ -175,7 +176,7 @@ var nextQues = function () {
     if (position < myQuestions.length) {
         showCurrentQuestion();
         showCurrentAnswer();
-    }else{
+    } else {
         endScreen();
     }
 
@@ -213,11 +214,19 @@ function playAgain() {
 startBtn.addEventListener('click', gameScreen, setTime);
 nextBtn.addEventListener('click', nextQues);
 playAgBtn.addEventListener('click', playAgain);
-// submitBtn.addEventListener('click');
 
 // starting page loading
 function loadPage() {
     startScreen();
 };
+
+//local storage added
+endEl.addEventListener("click", function (event) {
+    if (event.target.matches("#submitBtn")) {
+        localStorage.setItem(
+            event.target.parentNode.scoreCount, JSON.stringify(event.target.parentNode.querySelector("#add-score").value)
+        )
+    }
+});
 
 loadPage();

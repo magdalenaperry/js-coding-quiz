@@ -1,65 +1,58 @@
-html * {
+*html{
+    padding: 0px;
     margin: 0px;
-    padding: 50px;
+    
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-
-}
-#start{
-    padding: 20px 100px 20px 100px;
 }
 
-#game {
-
-    padding: 100px;
+input {
+    font-size: 30px;
 }
 
-#game-over {
-
-    padding: 100px;
-
-}
-button{
-    padding: 5px;
-    margin: 5px;
+label {
     font-size: 20px;
+}
+
+#timer, 
+#score {
+    background-color: red;
+    padding: 10px;
+    text-align: center;
+    font-size: 60px;
     font-variant: small-caps;
-    width: 120px;
-    text-align: left;
-}
-
-h1 {
-    padding: 50px 100px 50px 100px;
+    
 }
 
 
-#quiz-questions{
-    background-color: grey;
-    padding: 50px 100px 50px 100px;
+h1{
+    text-align: center;
+    padding: 10px;
+    font-variant: small-caps;
+    padding-bottom: 100px;
+
 }
 
-#quiz-choices {
-    background-color: lightgrey;
-    padding: 50px 100px 50px 100px;
+h2{
+    font-size: 30px;
+    text-align: center;
 }
 
-
-#timer
- {
-    background-color: rgba(255, 0, 0, 0.351);
-    font-size: 50px;
-    font-weight: 800;
-    padding: 50px;
+button{
+    text-align: center;
+    display: block;
 }
 
-#add-score{
+label {
     padding: 10px;
 }
 
-#score{
-    padding: 50px;
-    font-size: 100px;
-    font-weight: 800;
-    background-color:rgba(255, 0, 0, 0.351);
+#quiz-questions{
+    background-color: lightgrey;
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+p {
+    padding: 30px;
+    font-size: 30px;
 }

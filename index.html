@@ -5,30 +5,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Javascript Coding Quiz</title>
 </head>
 
-<body>
-    <div id="timer">0:00</div>
-    <div id="score"></div>
-    <h1>Javascript Coding Quiz</h1>
+<body class="center">
+    <div class="container">
+        <div class="row">
+            <div id="timer">0:00</div>
+            <div id="score"></div>
+            <h1>javascript coding quiz</h1>
+        </div>
 
 
+        <div id="start">
+            <h2>are you ready to begin?</h2>
+            <button class="col-2 btn btn-outline-secondary" id="start-btn">start</button>
 
-    <div id="start">
-        <h2>Are you Ready to Begin?</h2>
-        <button id="start-btn">start</button>
+        </div>
 
-    </div>
+        <div id="game">
+            <div class="col-12" id="quiz-questions"></div>
+            <div class="col-12 form-check-label" id="quiz-choices"></div>
 
-    <div id="game">
-        <h2>Questions</h2>
-        <div id="quiz-questions"></div>
-        <div id="quiz-choices"></div>
-
-    </div>
-    <button id="next-btn">next</button>
+        </div>
+        <button class="col-2 btn btn-outline-secondary" id="next-btn">next</button>
 
 
     </div>
@@ -37,10 +40,11 @@
         <h2>Game Over</h2>
         <div>
             <label for="add-score">Add Score</label>
-            <input type="text" id="add-score">
-            <button id="submit-score">submit</button>
+            <input class= "col2" type="text" id="add-score">
+            <button class="col-2" id="submit-score">submit</button>
         </div>
-        <div><button id="play-again">play again</button></div>
+        <div><button class="col 2 btn btn-outline-secondary" id="play-again">play again</button></div>
+    </div>
     </div>
 
 
