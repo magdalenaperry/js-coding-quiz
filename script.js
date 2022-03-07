@@ -96,6 +96,7 @@ function startScreen() {
     startEl.style.display = "block";
     gameEl.style.display = "none";
     endEl.style.display = "none";
+    nextBtn.style.display = "none";
     // reset position on question and seconds
     secondsLeft = 45;
     position = 0;
@@ -107,12 +108,12 @@ function gameScreen() {
     startEl.style.display = "none";
     gameEl.style.display = "block";
     endEl.style.display = "none";
+    nextBtn.style.display = "block"
+    
     setTime();
     showCurrentQuestion();
     showCurrentAnswer();
     printSecondsLeft();
-
-
 }
 
 function endScreen() {
@@ -121,9 +122,8 @@ function endScreen() {
     startEl.style.display = "none";
     gameEl.style.display = "none";
     endEl.style.display = "block";
+    nextBtn.style.display = "none";
     clearInterval(timerInterval);
-
-
 }
 
 // populate question beginnning at position: 0
